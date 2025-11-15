@@ -1,6 +1,6 @@
 [build]
-  base = "."
-  command = "npm run build"
+  base = "polling-app-client"
+  command = "npm install && npm run build"
   publish = "build"
 
 [[redirects]]
