@@ -1,79 +1,138 @@
-## Building a Full Stack Polls app similar to twitter polls with Spring Boot, Spring Security, JWT, React and Ant Design
+# Full-Stack Polling Application with Spring Boot and React
 
-![App Screenshot](screenshot.png)
+This repository contains the source code for a full-stack polling application. The backend is built with Java and Spring Boot, using Spring Security for token-based authentication. The frontend is a React application built with Ant Design.
 
-### Tutorials
+The application allows users to register, log in, create polls, vote on polls, and view their own profile with a list of created and voted-on polls.
 
-I've written a complete tutorial series for this application on The CalliCoder Blog -
+## Features
 
-+ [Part 1: Bootstrapping the Project and creating the basic domain models and repositories](https://www.callicoder.com/spring-boot-spring-security-jwt-mysql-react-app-part-1/)
+  * **User Authentication:** Secure user registration and login with JWT (JSON Web Token).
+  * **Poll Creation:** Logged-in users can create new polls with multiple choices.
+  * **Voting:** Logged-in users can vote on any poll, but only once per poll.
+  * **Paginated Poll Lists:** The main page displays a paginated list of all available polls.
+  * **User Profiles:** View a user's profile, including their name, username, join date, and separate tabs for polls they've created and polls they've voted on.
+  * **Protected Routes:** Both backend APIs and frontend routes are protected, redirecting unauthorized users to the login page.
 
-+ [Part 2: Configuring Spring Security along with JWT authentication and Building Rest APIs for Login and SignUp](https://www.callicoder.com/spring-boot-spring-security-jwt-mysql-react-app-part-2/)
+-----
 
-+ [Part 3: Building Rest APIs for creating Polls, voting for a choice in a Poll, retrieving user profile etc](https://www.callicoder.com/spring-boot-spring-security-jwt-mysql-react-app-part-3/)
+## Technical Stack
 
-+ [Part 4: Building the front-end using React and Ant Design](https://www.callicoder.com/spring-boot-spring-security-jwt-mysql-react-app-part-4/)
+### Backend (`polling-app-server`)
 
-## Steps to Setup the Spring Boot Back end app (polling-app-server)
+  * **Java 8**
+  * **Spring Boot:** Core backend framework.
+  * **Spring Security:** For JWT authentication and authorization.
+  * **Spring Data JPA (Hibernate):** For database ORM.
+  * **MySQL:** SQL database.
+  * **Flyway:** For database schema management and migrations.
+  * **Maven:** For build and dependency management.
 
-1. **Clone the application**
+### Frontend (`polling-app-client`)
 
-	```bash
-	git clone https://github.com/callicoder/spring-security-react-ant-design-polls-app.git
-	cd polling-app-server
-	```
+  * **React**
+  * **React Router:** For client-side routing.
+  * **Ant Design (`antd`):** UI component library.
+  * **NPM / Yarn:** For frontend package management.
 
-2. **Create MySQL database**
+-----
 
-	```bash
-	create database polling_app
-	```
+## Prerequisites
 
-3. **Change MySQL username and password as per your MySQL installation**
+To run this project locally, you must have the following tools installed:
 
-	+ open `src/main/resources/application.properties` file.
+1.  **Java JDK 8 or 11**
+2.  **Node.js and npm** (LTS version recommended)
+3.  **MySQL Server** (MySQL Workbench is a recommended GUI)
 
-	+ change `spring.datasource.username` and `spring.datasource.password` properties as per your mysql installation
+-----
 
-4. **Run the app**
+## How to Run Locally
 
-	You can run the spring boot app by typing the following command -
-
-	```bash
-	mvn spring-boot:run
-	```
-
-	The server will start on port 8080.
-
-	You can also package the application in the form of a `jar` file and then run it like so -
-
-	```bash
-	mvn package
-	java -jar target/polls-0.0.1-SNAPSHOT.jar
-	```
-5. **Default Roles**
-	
-	The spring boot app uses role based authorization powered by spring security. To add the default roles in the database, I have added the following sql queries in `src/main/resources/data.sql` file. Spring boot will automatically execute this script on startup -
-
-	```sql
-	INSERT IGNORE INTO roles(name) VALUES('ROLE_USER');
-	INSERT IGNORE INTO roles(name) VALUES('ROLE_ADMIN');
-	```
-
-	Any new user who signs up to the app is assigned the `ROLE_USER` by default.
-
-## Steps to Setup the React Front end app (polling-app-client)
-
-First go to the `polling-app-client` folder -
+### 1\. Clone the Repository
 
 ```bash
-cd polling-app-client
+git clone <your-repository-url>
+cd <your-repository-name>
 ```
 
-Then type the following command to install the dependencies and start the application -
+### 2\. Set Up the Database
 
-```bash
-npm install && npm start
-```
+1.  Start your local MySQL server.
+2.  Open **MySQL Workbench** (or your preferred SQL tool) and connect to your server.
+3.  Run the following SQL command to create the empty database:
+    ```sql
+    CREATE DATABASE polling_app;
+    ```
+    The server will automatically create all the necessary tables when it starts.
 
-The front-end server will start on port `3000`.
+### 3\. Configure and Run the Backend Server
+
+1.  **Set `JAVA_HOME`:** Ensure you have a `JAVA_HOME` environment variable set on your system that points to your JDK installation (e.g., `C:\Program Files\Java\jdk-11`). You **must restart your terminal or IDE** after setting this.
+
+2.  **Configure Database Credentials:**
+
+      * Open the file `polling-app-server/src/main/resources/application.properties`.
+      * Edit the `username` and `password` to match your local MySQL credentials:
+        ```properties
+        spring.datasource.username = YOUR_MYSQL_USERNAME
+        spring.datasource.password = YOUR_MYSQL_PASSWORD
+        ```
+
+3.  **Run the Server:**
+
+      * Open a terminal and navigate to the backend directory:
+        ```bash
+        cd polling-app-server
+        ```
+      * Run the server using the Maven Wrapper (this will download Maven if you don't have it):
+          * **On Windows (PowerShell/CMD):**
+            ```bash
+            .\mvnw spring-boot:run
+            ```
+          * **On macOS/Linux:**
+            ```bash
+            ./mvnw spring-boot:run
+            ```
+      * The backend will start on `http://localhost:5000`.
+
+### 4\. Run the Frontend Client
+
+1.  **Open a *new* terminal.**
+2.  Navigate to the frontend directory:
+    ```bash
+    cd polling-app-client
+    ```
+3.  Install all required packages:
+    ```bash
+    npm install
+    ```
+4.  Start the React development server:
+    ```bash
+    npm start
+    ```
+5.  Your browser will automatically open to `http://localhost:3000`, and you can now use the application.
+
+-----
+
+## Deployment
+
+This project is fully containerized and configured for deployment.
+
+### Docker Compose
+
+The easiest way to run the entire application stack (frontend, backend, database) in a production-like environment is with Docker Compose.
+
+1.  Ensure **Docker Desktop** is installed and running.
+2.  From the project's root directory, run:
+    ```bash
+    docker compose up --build
+    ```
+    This will build the images and start all services. The app will be available at `http://localhost:3000`.
+
+### Kubernetes
+
+The `deployments/` directory contains all the necessary Kubernetes (`.yaml`) files to deploy this application to a cluster (like Minikube, GKE, or EKS). This includes deployments for:
+
+  * `mysql-deployment.yaml`
+  * `polling-app-server.yaml`
+  * `polling-app-client.yaml`
