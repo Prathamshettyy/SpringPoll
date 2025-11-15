@@ -31,7 +31,7 @@ class PollList extends Component {
             if(this.props.type === 'USER_CREATED_POLLS') {
                 promise = getUserCreatedPolls(this.props.username, page, size);
             } else if (this.props.type === 'USER_VOTED_POLLS') {
-                promise = getUserVotedPolls(this.props.username, page, size);                               
+                promise = getUserVotedPolls(this.props.username, page, size);                                  
             }
         } else {
             promise = getAllPolls(page, size);
@@ -45,10 +45,14 @@ class PollList extends Component {
             isLoading: true
         });
 
-        promise            
+        promise             
         .then(response => {
-            const polls = this.state.polls.slice();
-            const currentVotes = this.state.currentVotes.slice();
+            // --- THIS IS THE FIX ---
+            // If it's page 0 (a fresh load), start with an EMPTY list.
+            // Otherwise, add to the existing list (for "Load More").
+            const polls = page === 0 ? [] : this.state.polls.slice();
+            const currentVotes = page === 0 ? [] : this.state.currentVotes.slice();
+            // --- END OF FIX ---
 
             this.setState({
                 polls: polls.concat(response.content),
@@ -131,7 +135,7 @@ class PollList extends Component {
             });        
         }).catch(error => {
             if(error.status === 401) {
-                this.props.handleLogout('/login', 'error', 'You have been logged out. Please login to vote');    
+                this.props.handleLogout('/login', 'error', 'You have been logged out. Please login to vote'); 
             } else {
                 notification.error({
                     message: 'Polling App',
@@ -172,7 +176,7 @@ class PollList extends Component {
                 }              
                 {
                     this.state.isLoading ? 
-                    <LoadingIndicator />: null                     
+                    <LoadingIndicator />: null                               
                 }
             </div>
         );

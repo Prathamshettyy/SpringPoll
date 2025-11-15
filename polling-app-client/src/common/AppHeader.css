@@ -7,6 +7,7 @@
     line-height: 64px;
     font-size: 21px;
     display: inline-block;
+    color: rgba(255, 255, 255, 0.95); /* Dark Theme: Light text */
   }
   
   .app-title a:hover {
@@ -16,7 +17,9 @@
   .app-header {
     position: fixed;
     width: 100%;
-    box-shadow: 0 2px 8px #f0f1f2;
+    /* Dark Theme: Use card background and a stronger shadow */
+    background-color: #2d2d2d;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
     z-index: 10;
     padding: 0;
   }
@@ -27,60 +30,84 @@
   
   .app-menu > li {
     padding: 0 20px;
+    transition: background-color 0.2s ease-in-out; /* Add hover transition */
   }
 
+  /* --- Add Hover Effect --- */
+  .app-menu > li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+ 
   .app-menu > li > a {
     padding: 0 20px;
     margin: 0 -20px;
+    /* Dark Theme: Make menu links light */
+    color: rgba(255, 255, 255, 0.85); 
   }
 
+  .app-menu > li > a:hover {
+    color: #1DA57A; /* Dark Theme: Use primary color on hover */
+  }
+ 
   .app-menu > li > a > i {
     margin-right: 0 !important;
   }
-
+ 
   .profile-dropdown-menu {
     min-width: 180px;
+    /* Dark Theme: Make dropdown dark */
+    background-color: #2d2d2d;
+    border: 1px solid #4d4d4d;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   }
-
+ 
   .profile-menu .user-full-name-info {
     font-size: 17px;
     font-weight: 600;
-    color: rgba(0,0,0,0.85);
+    color: rgba(255, 255, 255, 0.95); /* Dark Theme: Light text */
   }
   
   .profile-menu .username-info {
     font-size: 14px;
-    color: rgba(0,0,0,0.65);
+    color: rgba(255, 255, 255, 0.65); /* Dark Theme: Muted light text */
   }
-
+ 
   .dropdown-item {
     padding: 10px 12px;
+    color: rgba(255, 255, 255, 0.85); /* Dark Theme: Light text */
   }
 
+  /* Dark Theme: Style dropdown items on hover */
+  .dropdown-item:hover, .dropdown-item a:hover {
+    background-color: #1DA57A;
+    color: #fff;
+  }
+ 
   .dropdown-item a {
     padding: 10px 12px;
     margin: -10px -12px;
+    color: rgba(255, 255, 255, 0.85); /* Dark Theme: Light text */
   }
   
   .nav-icon {
     font-size: 20px;
   }
-
+ 
   .poll-icon {
     margin-top: -4px;
   }
-
-@media (max-width: 768px) {
+ 
+ @media (max-width: 768px) {
   .app-title a {
     font-size: 20px;
   }
-
+ 
   .app-menu > li {
     padding: 0 15px;
   }
-
+ 
   .app-menu > li > a {
     padding: 0 15px;
     margin: 0 -15px;
   }
-}  
+ }

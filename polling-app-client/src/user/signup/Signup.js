@@ -141,13 +141,15 @@ class Signup extends Component {
                                 onChange={(event) => this.handleInputChange(event, this.validatePassword)} />    
                         </FormItem>
                         <FormItem>
-                            <Button type="primary" 
-                                htmlType="submit" 
-                                size="large" 
-                                className="signup-form-button"
-                                disabled={this.isFormInvalid()}>Sign up</Button>
-                            Already registed? <Link to="/login">Login now!</Link>
-                        </FormItem>
+    <Button type="primary" 
+        htmlType="submit" 
+        size="large" 
+        className="signup-form-button"
+        disabled={this.isFormInvalid()}>Sign up</Button>
+    <span className="login-link">
+        Already registed? <Link to="/login">Login now!</Link>
+    </span>
+</FormItem>
                     </Form>
                 </div>
             </div>

@@ -1,20 +1,28 @@
 .polls-container {
     max-width: 600px;
-    margin: 0 auto;    
-    margin-top: 20px; 
+    margin: 0 auto;
+    margin-top: 20px;
 }
 
 .poll-content {
     margin-bottom: 30px;
     padding: 20px 15px 20px 15px;
     letter-spacing: .01em;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    background: #2d2d2d; 
+    border: 1px solid #4d4d4d; 
+    border-radius: 8px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.poll-content:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3); 
 }
 
 .poll-question {
     font-weight: 500;
     font-size: 21px;
-    color: rgba(0, 0, 0, 0.85);
+    color: rgba(255, 255, 255, 0.95);
     margin-bottom: 10px;
 }
 
@@ -43,25 +51,51 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    color: rgba(0, 0, 0, 0.75);
+    color: rgba(255, 255, 255, 0.75);
 }
+
+/* --- THIS IS THE FIX --- */
+/* Style for the radio button text */
+.poll-choice-radio .ant-radio-wrapper {
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Style for the radio button dot when checked */
+.poll-choice-radio .ant-radio-inner::after {
+    background-color: #1DA57A !important;
+}
+
+/* Style for the radio button circle when checked */
+.poll-choice-radio .ant-radio-checked .ant-radio-inner {
+    border-color: #1DA57A !important;
+}
+
+/* Style for the radio button circle when not checked */
+.poll-choice-radio .ant-radio-inner {
+    background-color: #1f1f1f;
+    border-color: #4d4d4d;
+}
+/* --- End of Fix --- */
+
 
 .vote-button {
     border-radius: 15px;
     margin-right: 15px;
-    color: #40a9ff;
-    border-color: #40a9ff;
+    color: #1DA57A;
+    border-color: #1DA57A;
+    background-color: transparent;
 }
 
 .vote-button:hover {
-    color: #1890ff;
-    border-color: #1890ff;    
+    color: #fff;
+    border-color: #1DA57A;
+    background-color: #1DA57A;
 }
 
 .vote-button[disabled], .vote-button[disabled]:hover, .vote-button[disabled]:focus {
-    color: #40a9ff;
-    border-color: #40a9ff;
-    background-color: #fff;
+    color: #1DA57A;
+    border-color: #1DA57A;
+    background-color: #2d2d2d;
     opacity: 0.4;
 }
 
@@ -93,7 +127,7 @@
 
 .cv-choice-percentage {
     font-weight: 600;
-    color: rgba(0, 0, 0, 0.75);
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .cv-choice-text {
@@ -108,12 +142,12 @@
 .selected-choice-icon {
     margin-left: 10px;
     font-weight: 600;
-    color: rgba(0, 0, 0, 0.75);
+    color: #1DA57A;
 }
 
 .cv-choice-percent-chart {
     position: absolute;
-    background: #E1E8ED;    
+    background: #4a4a4a;
     top: 0;
     left: 0;
     height: 100%;
@@ -123,7 +157,7 @@
 }
 
 .cv-choice-percent-chart.winner {
-    background-color: #77C7F7;
+    background-color: #1DA57A;
 }
 
 .poll-creator-info {
@@ -140,7 +174,7 @@
 }
 
 .poll-creator-info .creator-link:hover .poll-creator-name {
-    color: #1890ff;
+    color: #1DA57A;
     text-decoration: underline;
 }
 
@@ -152,7 +186,7 @@
     width: 48px;
     height: 48px;
     line-height: 48px;
-    border-radius: 24px;    
+    border-radius: 24px;
 }
 
 .poll-creator-avatar > * {
@@ -163,21 +197,21 @@
 .poll-creator-name {
     font-size: 16px;
     font-weight: 500;
-    color: rgba(0, 0, 0, 0.85);
+    color: rgba(255, 255, 255, 0.95);
     margin-top: 4px;
-    display: inline-block;    
+    display: inline-block;
     margin-right: 8px;
 }
 
 .poll-creator-username {
-    color: #657786;
+    color: #8899A6;
     font-size: 15px;
-    display: inline-block;  
+    display: inline-block;
 }
 
 .poll-creation-date {
-    display: block; 
-    color: #657786;
+    display: block;
+    color: #8899A6;
     font-size: 13px;
     margin-top: 2px;
 }
