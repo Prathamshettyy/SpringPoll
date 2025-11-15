@@ -1,5 +1,5 @@
 #### Stage 1: Build the application
-FROM openjdk:8-jdk-alpine as build
+FROM eclipse-temurin:8-jdk-alpine AS build
 
 # Set the current working directory inside the image
 WORKDIR /app
@@ -24,7 +24,7 @@ RUN ./mvnw package -DskipTests
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 #### Stage 2: A minimal docker image with command to run the app 
-FROM openjdk:8-jre-alpine
+FROM eclipse-temurin:8-jre-alpine
 
 ARG DEPENDENCY=/app/target/dependency
 
