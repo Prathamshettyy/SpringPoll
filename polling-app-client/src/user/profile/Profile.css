@@ -1,68 +1,116 @@
+.profile {
+    max-width: 700px;
+    margin: 40px auto;
+}
+
+.user-profile {
+    padding: 40px 30px;
+    background: #2d2d2d;
+    border: 1px solid #4d4d4d;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 40px;
+}
+
+.user-profile:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}
+
 .user-details {
-    margin-bottom: 44px;
-    padding-top: 40px;
-    padding-bottom: 20px;
-    margin: 0 auto;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
 }
 
-.user-avatar-circle {
-    width: 120px;
-    height: 120px;
-    border-radius: 60px;
-    line-height: 60px;
+/* --- THIS IS THE FIX --- */
+
+/* 1. We make the wrapper div a simple container */
+.user-avatar {
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: auto;
+    height: auto;
+    line-height: 1; /* Resets any default line-height */
 }
 
-.user-avatar-circle > * {
-    line-height: 120px;
-    font-size: 40px;
-    position: relative !important;
-    left: 0 !important;
+/* 2. We style the Ant Design Avatar component directly */
+.user-avatar-circle { 
+    width: 140px !important;
+    height: 140px !important;
+    
+    /* 3. This forces it to be a circle */
+    border-radius: 50% !important; 
+    
+    /* 4. This perfectly centers the "G" */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+    font-size: 60px !important;
+    border: 3px solid #1DA57A !important; 
 }
+/* --- End of Fix --- */
+
 
 .user-summary {
+    display: block;
     text-align: center;
-    padding-top: 20px;
-}
-
-@media (min-width: 576px) {
-    .user-details {
-        text-align: left;
-        display: table;
-    }    
-
-    .user-avatar, .user-summary {
-        float: left;
-        text-align: left;
-    }
-
-    .user-summary {
-        padding-top: 0;
-        padding-left: 40px;
-        width: calc(100% - 120px);
-    }
+    margin-top: 20px;
 }
 
 .user-summary .full-name {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 600;
-    color: rgba(0,0,0,0.85);
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+    color: rgba(255, 255, 255, 0.95);
 }
 
 .user-summary .username {
-    font-size: 20px;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.65);
 }
 
 .user-summary .user-joined {
-    margin-top: 5px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 8px;
 }
 
-@media (max-width: 768px) {
-    .user-summary .full-name {
-        font-size: 24px;
-    }    
+/* --- Modern Tab Styles --- */
+.profile-tabs .ant-tabs-bar {
+    border-bottom: 1px solid #4d4d4d !important;
+    margin-bottom: 25px !important;
 }
 
+.profile-tabs .ant-tabs-tab {
+    color: rgba(255, 255, 255, 0.65) !important;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.profile-tabs .ant-tabs-tab:hover {
+    color: #1DA57A !important;
+}
+
+.profile-tabs .ant-tabs-tab-active,
+.profile-tabs .ant-tabs-tab-active:hover {
+    color: #1DA57A !important;
+    font-weight: 600;
+}
+
+.profile-tabs .ant-tabs-ink-bar {
+    background-color: #1DA57A !important;
+}
+
+/* (Old classes, kept for compatibility) */
+.user-poll-details {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.poll-count {
+    margin-right: 30px;
+}

@@ -1,48 +1,82 @@
 .new-poll-container {
-    max-width: 520px;
-    margin: 0 auto;
-    margin-top: 40px;
+    max-width: 500px;
+    margin: 50px auto;
+    background: #2d2d2d;
+    border: 1px solid #4d4d4d;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    border-radius: 8px;
+    padding: 30px;
 }
 
-.create-poll-form-button {
-    width: 100%;
-}
-
-.create-poll-form-button[disabled], .create-poll-form-button[disabled]:hover, .create-poll-form-button[disabled]:focus {
-    opacity: 0.6;
-    color: #fff;
-    background-color: #1890ff;
-    border-color: #1890ff;
-}
-
-
-.dynamic-delete-button {
-    cursor: pointer;
-    position: relative;
-    top: 4px;
+.new-poll-title {
     font-size: 24px;
-    color: #999;
-    transition: all .3s;
-}
-
-.optional-choice {
-    width: calc(100% - 35px);
-    margin-right: 8px;
-}
-
-.dynamic-delete-button:hover {
-    color: #777;
-}
-
-.dynamic-delete-button[disabled] {
-    cursor: not-allowed;
-    opacity: 0.5;
-}
-
-.poll-form-row {
+    font-weight: 500;
     margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.95);
 }
 
-.poll-form-row input, .poll-form-row textarea {
-    margin-bottom: 4px;
+.new-poll-form .ant-form-item {
+    margin-bottom: 15px;
+}
+
+.new-poll-form .ant-form-item-control-input {
+    min-height: 40px;
+}
+
+.new-poll-form .ant-form-item-control-input .ant-input {
+    min-height: 40px;
+}
+
+.poll-choice-row {
+    display: flex;
+    align-items: center;
+}
+
+.poll-choice {
+    flex-grow: 1;
+}
+
+/* --- BUTTON FIXES (WITH HOVER) --- */
+
+/* "Add a choice" Button (Button[type="dashed"]) */
+/* THIS IS THE CORRECTED SELECTOR */
+.create-poll-form .ant-btn-dashed {
+    height: 40px;
+    background-color: #4d4d4d !important;
+    border-color: #4d4d4d !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+    transition: all 0.2s ease;
+}
+.create-poll-form .ant-btn-dashed:hover {
+    background-color: #5d5d5d !important;
+    border-color: #5d5d5d !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* "Remove Choice" Icon (Icon className="dynamic-delete-button") */
+.dynamic-delete-button {
+    margin-left: 10px;
+    font-size: 20px;
+    color: #ff4d4f; /* Red for 'delete' */
+    transition: all 0.2s ease;
+}
+.dynamic-delete-button:hover {
+    transform: scale(1.2); /* Make icon bigger on hover */
+    color: #ff7875;
+}
+
+
+/* "Create Poll" Button (Button className="create-poll-form-button") */
+.create-poll-form-button { 
+    height: 40px;
+    margin-top: 15px;
+    background-color: #1DA57A !important;
+    border-color: #1DA57A !important;
+    color: white !important;
+    transition: all 0.2s ease;
+}
+
+.create-poll-form-button:hover {
+    background-color: #26c28e !important;
+    border-color: #26c28e !important;
 }

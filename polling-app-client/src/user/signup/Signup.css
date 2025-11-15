@@ -1,21 +1,74 @@
 .signup-container {
-    max-width: 420px;
-    margin: 0 auto;
-    margin-top: 40px;    
+    max-width: 500px;
+    margin: 50px auto;
+    background: #2d2d2d;
+    border: 1px solid #4d4d4d;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    border-radius: 8px;
+    padding: 30px;
 }
 
+.signup-title {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.signup-form .ant-form-item {
+    margin-bottom: 15px;
+}
+
+.signup-form .ant-form-item-control-input {
+    min-height: 40px;
+}
+
+.signup-form .ant-form-item-control-input .ant-input {
+    min-height: 40px;
+}
+
+.signup-form .ant-input,
+.signup-form .ant-input:focus,
+.signup-form .ant-input-affix-wrapper,
+.signup-form .ant-input-affix-wrapper:focus-within {
+    background-color: #1f1f1f !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    border: 1px solid #4d4d4d !important;
+}
+
+.signup-form .ant-input::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.signup-form .ant-input-prefix {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+
+/* --- THIS IS THE FIX (BUTTON COLOR) --- */
 .signup-form-button {
-    width: 100%;
+    height: 40px;
     margin-top: 15px;
+    color: white !important;
+    background-color: #1DA57A !important; /* Force green color */
+    border-color: #1DA57A !important; /* Force green border */
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.signup-form-button[disabled], .signup-form-button[disabled]:hover, .signup-form-button[disabled]:focus {
-    opacity: 0.6;
-    color: #fff;
-    background-color: #1890ff;
-    border-color: #1890ff;
+.signup-form-button:hover {
+    background-color: #26c28e !important;
+    border-color: #26c28e !important;
 }
 
-.signup-form input {
-    margin-bottom: 3px;
+/* --- THIS IS THE FIX (SPACING) --- */
+.login-link {
+    display: inline-block; /* Allows margin to work */
+    margin-left: 5px; /* Adds space next to "Already registed?" */
+    margin-top: 15px; /* Adds space above */
+    color: rgba(255, 255, 255, 0.75);
+}
+/* --- End of Fix --- */
+
+.login-link a {
+    color: #1DA57A;
 }
